@@ -1,26 +1,24 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Pet extends Entity {
-    private int currHumanRanking;
-    private Human[] humanPreferences;
-
-    public Pet(Scanner sc) {
-        super(sc);
+    public Pet(Scanner sc, int index) {
+        super(sc, index);
     }
 
-    public int getCurrHumanRanking() {
-        return this.currHumanRanking;
-    }
-
-    public void setCurrHumanRanking(int rank) {
-        this.currHumanRanking = rank;
-    }
-
-    public void setHumanPreferences(Human[] humans) {
-        for(int i = 0; i < GS.size; i++) {
-            humanPreferences = new Human[GS.size];
-            int indexOfHuman = preferences[i];
-            humanPreferences[i] = humans[--indexOfHuman];
+    public boolean acceptAdoption(Human human, Stack<Human> stackOfUnmatched) {
+        if(matchedEntity == null) {
+            matchedEntity = human;
+            return true;
+        } else {
+            if(rankings[matchedEntity.getIndex()] > rankings[human.getIndex()]) {
+                matchedEntity.unmatched();
+                stackOfUnmatched.push((Human)matchedEntity);
+                matchedEntity = human;
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

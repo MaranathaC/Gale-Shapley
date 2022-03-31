@@ -2,18 +2,19 @@ import java.util.Scanner;
 
 public class Entity {
     protected String name;
+    protected int index;
     protected int[] preferences;
-    protected boolean matched;
+    protected int[] rankings;
     protected Entity matchedEntity;
+
 
     public Entity() {
         name = "NAME";
-        matched = false;
     }
 
-    public Entity(Scanner sc) {
+    public Entity(Scanner sc, int index) {
         this.name = sc.nextLine();
-        matched = false;
+        this.index = index;
     }
 
     public String getName() {
@@ -24,24 +25,32 @@ public class Entity {
         this.name = name;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     public int[] getPreferences() {
         return preferences;
     }
 
     public void setPreferences(Scanner sc) {
-        preferences = new int[GS.size];
-        for (int i = 0; i < GS.size; i++) {
+        preferences = new int[GS.size + 1];
+        rankings = new int[GS.size + 1];
+
+        for (int i = 1; i <= GS.size; i++) {
             preferences[i] = sc.nextInt();
+        }
+
+        for(int i = 1; i <= GS.size; i++) {
+            int index = preferences[i];
+            rankings[index] = i; // key: index, value: ranking in preference list
         }
     }
 
-    public boolean isMatched() {
-        return matched;
+    public void unmatched() {
+        matchedEntity = null;
     }
 
-    public void setMatched(boolean matched) {
-        this.matched = matched;
-    }
 
     public String getNameOfMatch() {
         return matchedEntity.getName();
