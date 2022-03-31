@@ -61,9 +61,4 @@ public class GS {
             System.out.println(humans[i].getName() + " / " + humans[i].matchedEntity.getName());
         }
     }
-
-    public static void main(String[] args) {
-        GS gs = new GS();
-        gs.match();
-    }
 }
