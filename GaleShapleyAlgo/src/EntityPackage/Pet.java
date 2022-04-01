@@ -1,3 +1,8 @@
+package EntityPackage;
+
+import EntityPackage.Entity;
+import EntityPackage.Human;
+
 import java.util.Scanner;
 import java.util.Stack;
 

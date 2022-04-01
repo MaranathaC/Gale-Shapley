@@ -1,7 +1,9 @@
+package EntityPackage;
+
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Human extends Entity{
+public class Human extends Entity {
     private int nextAdoption; // preference index pointer
 
     public Human(Scanner sc, int index) {

@@ -1,3 +1,5 @@
+import EntityPackage.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -7,7 +9,6 @@ public class GS {
     protected static int size; // num of people and pets
     private Human[] humans; // arr of names of people
     private Pet[] pets; // arr of names of pets
-    private int numOfMatch;
     private Stack<Human> stackOfUnmatched;
 
     public GS() {
@@ -21,7 +22,6 @@ public class GS {
             sc.nextLine();
             humans = new Human[size + 1];
             pets = new Pet[size + 1];
-            numOfMatch = 0;
 
             // initialize arr of names of people
             for(int i = 1; i <= size; i++) {
@@ -31,7 +31,7 @@ public class GS {
 
             // initialize 2d arr of ranking of pets
             for(int i = 1; i <= size; i++) {
-                humans[i].setPreferences(sc);
+                humans[i].setPreferences(sc, size);
                 sc.nextLine();
             }
 
@@ -42,7 +42,7 @@ public class GS {
 
             // initializes ranking of humans
             for(int i = 1; i <= size; i++) {
-                pets[i].setPreferences(sc);
+                pets[i].setPreferences(sc, size);
             }
 
             sc.close();
@@ -58,7 +58,7 @@ public class GS {
             nextMatch.adopt(pets, stackOfUnmatched);
         }
         for (int i = 1; i <= size; i++) {
-            System.out.println(humans[i].getName() + " / " + humans[i].matchedEntity.getName());
+            System.out.println(humans[i].getName() + " / " + humans[i].getNameOfMatch());
         }
     }
 }

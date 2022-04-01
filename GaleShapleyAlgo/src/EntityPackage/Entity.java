@@ -1,3 +1,5 @@
+package EntityPackage;
+
 import java.util.Scanner;
 
 public class Entity {
@@ -33,15 +35,15 @@ public class Entity {
         return preferences;
     }
 
-    public void setPreferences(Scanner sc) {
-        preferences = new int[GS.size + 1];
-        rankings = new int[GS.size + 1];
+    public void setPreferences(Scanner sc, int size) {
+        preferences = new int[size + 1];
+        rankings = new int[size + 1];
 
-        for (int i = 1; i <= GS.size; i++) {
+        for (int i = 1; i <= size; i++) {
             preferences[i] = sc.nextInt();
         }
 
-        for(int i = 1; i <= GS.size; i++) {
+        for(int i = 1; i <= size; i++) {
             int index = preferences[i];
             rankings[index] = i; // key: index, value: ranking in preference list
         }
@@ -50,7 +52,6 @@ public class Entity {
     public void unmatched() {
         matchedEntity = null;
     }
-
 
     public String getNameOfMatch() {
         return matchedEntity.getName();
