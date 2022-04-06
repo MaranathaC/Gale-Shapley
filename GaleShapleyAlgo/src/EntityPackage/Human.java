@@ -21,7 +21,7 @@ public class Human extends Entity {
      */
     public Human(Scanner sc, int index) {
         super(sc, index);
-        nextAdoption = 1;
+        nextAdoption = 1; // starting from 1st in preference list
     }
 
     /**
